@@ -13,4 +13,4 @@ plotly
 scikit-learn
 numpy
 lxml
-
+httpx
