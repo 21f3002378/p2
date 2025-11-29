@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: tds-fastapi-agent
+    env: docker
+    autoDeploy: true
+    plan: free
+    branch: main
+    envVars:
+      - key: AIPIPE_API_KEY
+        sync: false
+      - key: AIPIPE_API_URL
+        sync: false
+      - key: AIPIPE_MODEL
+        sync: false
+      - key: STUDENT_EMAIL
+        sync: false
+      - key: STUDENT_SECRET
+        sync: false
