@@ -18,5 +18,3 @@ matplotlib
 pydub
 openai-whisper
 tenacity
-pyaudio
-SpeechRecognition
