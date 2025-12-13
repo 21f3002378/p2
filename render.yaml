@@ -1,18 +1,28 @@
 services:
   - type: web
-    name: tds-fastapi-agent
-    env: docker
-    autoDeploy: true
+    name: tds-quiz-solver
+    env: python
     plan: free
-    branch: main
+    region: singapore
+
+    buildCommand: |
+      pip install --upgrade pip
+      pip install -r requirements.txt
+      python -m playwright install chromium
+      python -m playwright install-deps
+
+    startCommand: |
+      uvicorn app:app --host 0.0.0.0 --port 10000
+
     envVars:
+      - key: PYTHONUNBUFFERED
+        value: "1"
+
       - key: AIPIPE_API_KEY
         sync: false
+
       - key: AIPIPE_API_URL
-        sync: false
+        value: https://aipipe.org/openrouter/v1/chat/completions
+
       - key: AIPIPE_MODEL
-        sync: false
-      - key: STUDENT_EMAIL
-        sync: false
-      - key: STUDENT_SECRET
-        sync: false
+        value: gpt-5-nano
