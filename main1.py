@@ -10,6 +10,11 @@ EXPECTED_SECRET = "lolipop"
 app = FastAPI()
 
 
+@app.get("/")
+async def health():
+    return {"status": "ok"}
+
+
 @app.post("/quiz")
 async def quiz_endpoint(request: Request):
     print("1 Received /quiz request")
@@ -39,4 +44,5 @@ async def quiz_endpoint(request: Request):
     result = task.result()
 
     return {"status": "done", "result": result}
+
 
